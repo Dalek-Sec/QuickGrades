@@ -24,7 +24,7 @@ var classes = [
         "Viewable": "1",
         "PDate": "11/14/13"
     }
-]
+];
 //substitutes a function that would get last 5 assigments in each class for the student
 var assignments = [
   [
@@ -123,13 +123,37 @@ var assignments = [
         "Comments": ""
     }
   ]
-]
-window.addEventListener("load", getGrades);
-function getGrades() {
-  for (i=0; i < classes.length; i++) {
-    console.log(classes[i].ClassName);
-    var row = document.createElement("tr");
-    row.innerHTML = "<td>"+classes[i].ClassName+"</td><td>"+classes[i].Letter+"</td><td>"+classes[i].Comments+"</td><p>"+assignments[i][0].Title+"</p>";
-    document.getElementById("classGrades").appendChild(row);
-  }
-}
+];
+
+window.addEventListener("load", refreshData);
+function loadGrades() {
+    $( "#classGrades" ).empty();
+    for (i=0; i < classes.length; i++) {
+        $( "#classGrades" ).append( "<tr class='class' id=" + i + "></tr>" );
+        $( "#" + i ).append( "<td>"+classes[i].ClassName+"</td><td>"+classes[i].Letter+"</td><td>"+classes[i].Comments+"</td><ul id='assignmentGrades'></ul>" );
+    };
+};
+
+function assigmentsListen() {
+    $( ".class" ).click(function() {
+        var x = $(this).attr("id");
+        $( "#assignmentGrades" ).empty();
+        for (i=0; i < assignments[x].length; i++) {
+            console.log(i);
+            //change header text
+            $(  "#assignmentGrades" ).append( "<tr id='assignment" + i + "'></tr>" );
+            $( "#assignment" + i ).append( "<td>"+assignments[x][i].Title+"</td><td>"+assignments[x][i].Score+"</td><td>"+assignments[x][i].Comments+"</td>" );
+        };
+        //open popup for normally hidden assignmentGrades
+    });
+};
+
+function refreshData() {
+    //runs function that gets grades
+    //runs function that gets assignments
+    loadGrades();
+    assigmentsListen();
+};
+
+//check and notify for new data
+
