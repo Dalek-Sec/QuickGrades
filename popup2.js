@@ -153,7 +153,7 @@ function refreshData() {
     //runs function that gets assignments
     loadGrades();
     assigmentsListen();
+    document.getElementById("refreshBtn").addEventListener("click", refreshData);
 };
 
 //check and notify for new data
-
