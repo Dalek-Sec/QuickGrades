@@ -2,15 +2,27 @@
 
 <html>
     <head>
-        <script src="jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
         <script src="popup2.js"></script>
+        <script src="jquery.min.js"></script>
+        <!-- concatenated -->
+        <script type="text/javascript" src="./easybox/distrib.min.js"></script>
+
+        <!-- seperate files -->
+        <script type="text/javascript" src="./easybox/easybox.min.js"></script>
+        <script type="text/javascript" src="./easybox/handlers.min.js"></script>
+        <script type="text/javascript" src="./easybox/extras/autoload.min.js"></script>
+        <link rel="stylesheet" href="./easybox/styles/default/easybox.min.css" type="text/css" media="screen" />
+        
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+
     </head>
-    <body>
+    <body class="big">
+        <a href="#assignmentGrades" title="Assignment Grades" class="lightbox">
+            
         <table id="classGrades"></table>
+        </a>
         <div id="assig">
             <table id="assignmentGrades"></table>
-            <a id="hideAssigBtn"><input type="button" value="Back"></a>
         </div>
         <span>
             <a id="refreshBtn"><input type="button" value="Refresh"></a>
@@ -18,4 +30,3 @@
         </span>
     </body>
 </html>
-
